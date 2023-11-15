@@ -1,0 +1,16 @@
+{
+    "name": "osit/webalitics",
+    "description": "Focused web analytics software, with real-time reports about the traffic sources, locations, and technologies used by the visitors.",
+    "autoload": {
+        "psr-4": {
+            "Osit\\Webalitics\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dominic",
+            "email": "developer@osit.co.za"
+        }
+    ],
+    "require": {}
+}
