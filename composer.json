@@ -12,5 +12,16 @@
             "email": "developer@osit.co.za"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.32"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Osit\\Webalitics\\WebaliticsBaseServiceProvider"
+            ]
+        }
+    }
 }
