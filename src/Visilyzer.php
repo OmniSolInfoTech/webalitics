@@ -16,11 +16,11 @@ class Visilyzer
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
-     * @return mixed
+     * @param Request $request
+     * @param Closure $next
+     * @return object
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): object
     {
         $response = $next($request);
         //Load Config setting
