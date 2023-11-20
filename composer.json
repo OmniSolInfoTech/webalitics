@@ -6,6 +6,14 @@
             "Osit\\Webalitics\\": "src/"
         }
     },
+    "require-dev": {
+        "orchestra/testbench": "*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Osit\\Webalitics\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Dominic",
