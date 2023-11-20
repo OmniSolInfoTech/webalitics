@@ -13,6 +13,8 @@ class WebaliticsBaseServiceProvider extends ServiceProvider
         }
 
         $this->registerResources();
+        $this->loadRoutesFrom(__DIR__.'/../src/routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/../src/resources/views', 'webalitics');
     }
 
     public function register()
