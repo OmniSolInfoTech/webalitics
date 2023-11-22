@@ -25,8 +25,6 @@ class CreateWebvisitsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('webalitic');
-
         Schema::dropIfExists('webvisits');
     }
 }
