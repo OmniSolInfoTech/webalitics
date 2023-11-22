@@ -4,7 +4,7 @@ use \Illuminate\Database\Migrations\Migration;
 use \Illuminate\Support\Facades\Schema;
 use \Illuminate\Database\Schema\Blueprint;
 
-class CreateWebaliticsTable extends Migration
+class CreateWebaliticTable extends Migration
 {
     /**
      * Run the migrations.
@@ -36,7 +36,5 @@ class CreateWebaliticsTable extends Migration
     public function down(): void
     {
         Schema::dropIfExists('webalitic');
-
-        Schema::dropIfExists('webvisits');
     }
 }
