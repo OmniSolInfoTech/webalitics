@@ -32,5 +32,6 @@ class WebaliticsBaseServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         $this->publishes([__DIR__."/config/webalitic.php" => config_path("webalitic.php")], "webalitics-config");
+        $this->publishes([ __DIR__."/resources/webalitic-assets" => public_path("webalitic-assets"),], "webalitics-config");
     }
 }
