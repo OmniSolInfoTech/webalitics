@@ -1,18 +1,14 @@
-@extends('layouts.master')
+@extends('webalitics::boilerplate')
 
 @section('title') Webalitic - Visitor Profile @endsection
 
-@section('css')
-    <!-- leaflet Css -->
-    <link href="{{ URL::asset('/assets/libs/leaflet/leaflet.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
 
 @section('content')
 
-    @component('components.breadcrumb')
-        @slot('li_1') VerifyID @endslot
-        @slot('title') Webalitic - Visitor Profile @endslot
-    @endcomponent
+{{--    @component('components.breadcrumb')--}}
+{{--        @slot('li_1') VerifyID @endslot--}}
+{{--        @slot('title') Webalitic - Visitor Profile @endslot--}}
+{{--    @endcomponent--}}
 
     @php($geoip = json_decode($visitor_info->geoip))
     <div class="row align-items-center">
@@ -87,22 +83,18 @@
     <br/>
 @endsection
 @section('script')
-    <!-- leaflet plugin -->
-    <script src="{{ URL::asset('/assets/libs/leaflet/leaflet.min.js') }}"></script>
-
     <script>
-        var markermap = L.map("leaflet-map-marker").setView([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}], 12);
-        L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGhpbGlwY3NhcGxhciIsImEiOiJjbGdnZDhldTAwYWk1M2RsaW5sbnhoamxjIn0.pM4wIiuWOHhUMu2nT7z_-Q", {
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: "mapbox/streets-v11",
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(markermap), L.marker([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}]).addTo(markermap), L.circle([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}], {
-            color: "#34c38f",
-            fillColor: "#34c38f",
-            fillOpacity: .5,
-            radius: {{$geoip->location->accuracy_radius}}
-        }).addTo(markermap);
+        var map = L.map('leaflet-map-marker').setView([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}], 12);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        var marker = L.marker([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}]).addTo(map);
+        var circle = L.circle([{{$geoip->location->latitude}}, {{$geoip->location->longitude}}], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
     </script>
 @endsection
