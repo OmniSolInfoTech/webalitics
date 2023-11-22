@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
+use Osit\Webalitics\Models\WebaliticUser;
 
 class WebaliticController extends Controller
 {
@@ -17,6 +18,20 @@ class WebaliticController extends Controller
     }
     public function adminWebalitic(Request $request)
     {
+        /**
+         * If there is no entry for a User with user_name = {env("WEBALITIC_USER_NAME")} in {webalitic_user} table,
+         * create the record.
+         */
+        WebaliticUser::upsert(
+            [
+                "id" => 1,
+                "user_name" => env("WEBALITICS_USER_NAME") ?? "unknown_user",
+                "website_name" => env("WEBALITICS_WEBSITE_NAME") ?? "unknown_website"
+            ],
+            ["id", "user_name", "website_name"],
+            ["user_name", "website_name"]
+        );
+
         $month = date('n');
         if (($request->post('startdate')) && ($request->post('enddate'))) {
             $startDate = $request->post('startdate') . " 00:00:00";
@@ -91,6 +106,15 @@ class WebaliticController extends Controller
 //            ->where("created_at", "<=", date('Y-m-d H:i:s', mktime(23, 59, 59, $month + 1, 0, date('Y'))))
             ->where("created_at", "<=", date('Y-m-d H:i:s', strtotime( mktime(23, 59, 59, $month, 0, date('Y')) . "+1 month")))
             ->count();
+
+
+        $webalitic_user = DB::table('webalitic_user')
+                            ->where("user_name",
+                                    "=",
+                                    env("WEBALITICS_USER_NAME") ?? "unknown_user")
+                            ->get()
+                            ->toArray();
+
         $data = array(
             "oslabels" => $osLabels,
             "osseries" => $osSeries,
@@ -103,7 +127,8 @@ class WebaliticController extends Controller
             "mobile" => $mobile,
             "today" => $today,
             "month_transactions" => $month_transactions,
-            "transactions" => $transactions
+            "transactions" => $transactions,
+            "webalitic_user" => $webalitic_user
         );
         return view('webalitics::webalitic', $data);
     }
