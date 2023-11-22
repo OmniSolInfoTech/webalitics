@@ -142,6 +142,6 @@ class WebaliticController extends Controller
         $data = array(
             "visitor_info" => $visitor_info[0]
         );
-        return view('webalitic_profile', $data);
+        return view('webalitics::webalitic_profile', $data);
     }
 }
