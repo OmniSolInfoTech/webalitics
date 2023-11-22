@@ -22,7 +22,7 @@ class CreateWebaliticTable extends Migration
             $table->string("version", 10)->default(NULL);
             $table->string("os", 50)->default(NULL);
             $table->integer("is_bot")->default(0);
-            $table->tinyText("u_agent")->default(NULL);
+            $table->tinyText("u_agent")->default(NULL)->nullable();
             $table->string("m", 10)->default(NULL);
             $table->longText("geoip")->default(NULL);
             $table->timestamp("created_at")->useCurrent();
