@@ -53,10 +53,7 @@ class GeoIP{
         $info = curl_getinfo($ch);
         curl_close($ch);
 
-        return json_decode($output, true);
-
-        //return $info ;
-
+        return ["output" => json_decode($output, true), "info" => $info];
     }
 
 }
