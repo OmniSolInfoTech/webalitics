@@ -1,141 +1,112 @@
-@extends('layouts.master')
+@extends('webalitics::boilerplate')
 
 @section('title') Webalitic - Site Analytics @endsection
 
 @section('content')
 
-    @component('components.breadcrumb')
-        @slot('li_1') VerifyID @endslot
-        @slot('title') Webalitic - Site Analytics @endslot
-    @endcomponent
+{{--    @component('components.breadcrumb')--}}
+{{--        @slot('li_1') VerifyID @endslot--}}
+{{--        @slot('title') Webalitic - Site Analytics @endslot--}}
+{{--    @endcomponent--}}
 
-    <div class="row d-print-none search_box" style="display: none;">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-
-                    <h4 class="card-title">
-                        Search Visitors</h4>
-                    <p class="card-title-desc">
-                        Search visitors by data
-                    </p>
-                    <form class="row gy-2 gx-3 align-items-center custom-validation" method="post"
-                          action="{{route('webalitic')}}">
-                        @csrf
-                        <div class="col-sm-auto">
-                            <div class="input-daterange input-group" id="datepicker6" data-date-format="yyyy-mm-dd"
-                                 data-date-autoclose="true" data-provide="datepicker"
-                                 data-date-container='#datepicker6'>
-                                <input type="text" class="form-control" name="startdate" placeholder="Start Date"
-                                       data-parsley-errors-messages-disabled required/>
-                                <input type="text" class="form-control" name="enddate" placeholder="End Date"
-                                       data-parsley-errors-messages-disabled required/>
-                            </div>
-                        </div>
-                        <div class="col-sm-auto">
-                            <button type="submit" class="btn btn-primary processing">
-                                Search
-                            </button>
-                        </div>
-                    </form>
+    <div class="row my-3">
+        <h4>
+            Summary
+        </h4>
+        @if($webalitic_user[0]->credentials_faulty == 1)
+            <div class="col-12 my-1 px-1">
+                <div class="alert alert-danger h-100" role="alert">
+                    Please check your GeoIP Credentials, requests keep failing.
                 </div>
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
+        @endif
+{{--        @if($webalitic_user[0]->failed_transactions > 0)--}}
+{{--            <div class="col-12 col-md-6 my-1 px-1">--}}
+{{--                <div class="alert alert-danger h-100" role="alert">--}}
+{{--                    You have had {{ $webalitic_user[0]->failed_transactions }} /--}}
+{{--                    {{ $webalitic_user[0]->failed_transactions + $webalitic_user[0]->successful_transactions }} GeoIP--}}
+{{--                    requests fail.--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+    </div>
+    <div class="row my-3">
+        <div class="col-lg-6 my-1 px-1">
+            <div class="card h-100">
+                <div class="card-body">
 
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card mini-stats-wid">
-                        <div class="card-body">
-
-                            <div class="d-flex flex-wrap">
-                                <div class="me-3">
-                                    <p class="text-muted mb-2">Visitors Today / Crawler </p>
-                                    <h5 class="mb-0">{{$today}} / {{$is_bot}} <i class="bx bx-search search"></i></h5>
-                                </div>
-
-                                <div class="avatar-sm ms-auto">
-                                    <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
-                                        <i class="bx bx-task"></i>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div class="d-flex flex-wrap">
+                        <div class="me-3">
+                            <p class="text-muted mb-2">Visitors Today / Crawler </p>
+                            <h5 class="mb-0">{{$today}} / {{$is_bot}} <i class="bx bx-search search"></i></h5>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card blog-stats-wid">
-                        <div class="card-body">
-                            <div class="d-flex flex-wrap">
-                                <div class="me-3">
-                                    <p class="text-muted mb-2">Total for Month</p>
-                                    <h5 class="mb-0">{{$month_transactions}}</h5>
-                                </div>
 
-                                <div class="avatar-sm ms-auto">
-                                    <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
-                                        <i class="bx bx-stats"></i>
-                                    </div>
-                                </div>
+                        <div class="avatar-sm ms-auto">
+                            <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
+                                <i class="bx bx-task"></i>
                             </div>
                         </div>
                     </div>
+
                 </div>
+            </div>
+        </div>
+        <div class="col-lg-6 my-1 px-1">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap">
+                        <div class="me-3">
+                            <p class="text-muted mb-2">Total for Month</p>
+                            <h5 class="mb-0">{{$month_transactions}}</h5>
+                        </div>
 
-
+                        <div class="avatar-sm ms-auto">
+                            <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
+                                <i class="bx bx-stats"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-6">
-            <div class="card">
+    <div class="row my-3">
+        <div class="col-xl-6 my-1 px-1">
+            <div class="card h-100">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Countries</h4>
-
                     <div id="pie_chart" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
         </div>
-        <!-- end col -->
-
-        <div class="col-xl-6">
-            <div class="card">
+        <div class="col-xl-6 my-1 px-1">
+            <div class="card h-100">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Browsers</h4>
-
                     <div id="donut_chart" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
         </div>
-        <!-- end col -->
     </div>
     <!-- end row -->
-    <div class="row">
-        <div class="col-xl-6">
-            <div class="card">
+    <div class="row my-3">
+        <div class="col-xl-6 my-1 px-1">
+            <div class="card h-100">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Desktop/Mobile</h4>
-
                     <div id="donut_chart_desktop_mobile" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
         </div>
-
-        <div class="col-xl-6">
-            <div class="card">
+        <div class="col-xl-6 my-1 px-1">
+            <div class="card h-100">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Operating System</h4>
-
                     <div id="donut_chart_os" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 
     <div class="col-12">
         <div class="card">
@@ -161,14 +132,16 @@
                             <td>{{$visit->country}}</td>
                             <td>@if($visit->m == "0") Desktop @elseif($visit->m == "1") Mobile @endif</td>
                             <td>
-                                <button type="button" class="waves-effect btn-sm btn-primary"
-                                        onclick="event.preventDefault(); document.getElementById('form_{{$visit->id}}').submit();">
-                                    More Info
-                                </button>
-                                <form id="form_{{$visit->id}}" action="{{ route('webalitic-profile') }}" target="_blank" method="POST" style="display: none;">
-                                    <input type="hidden" name="id" value="{{$visit->id}}"/>
-                                    @csrf
-                                </form>
+                                @if(!is_null(config('webalitic.geoip.clientId')))
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                            onclick="event.preventDefault(); document.getElementById('form_{{$visit->id}}').submit();">
+                                        More Info
+                                    </button>
+                                    <form id="form_{{$visit->id}}" action="{{ route('/webalitics/webalitic-profile') }}" target="_blank" method="POST" style="display: none;">
+                                        <input type="hidden" name="id" value="{{$visit->id}}"/>
+                                        @csrf
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                         @php($i++)
@@ -181,9 +154,6 @@
 
 @endsection
 @section('script')
-    <!-- apexcharts -->
-    <script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
     <script>
         $(document).ready(function () {
 
