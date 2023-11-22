@@ -18,11 +18,11 @@ class ProcessCommand extends Command
     public function handle()
     {
         // create a local copy of the config file
-        $result = Process::run('php artisan vendor:publish --tag=webalitics-config');
+        $result = Process::run("php artisan vendor:publish --tag=webalitics-config");
         echo $result->output();
 
         // run migrate
-        $result = Process::run('php artisan migrate');
+        $result = Process::run("php artisan migrate");
         echo $result->output();
     }
 }
