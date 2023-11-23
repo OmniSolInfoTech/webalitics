@@ -1,8 +1,11 @@
 # WEBALITICS  
 
+![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/osit/webalitics/php)
 ![Static Badge](https://img.shields.io/badge/Laravel-PHP)
-![Static Badge](https://img.shields.io/badge/PHP_Version-Above8-blue)
 ![License](https://img.shields.io/github/license/omnisolinfotech/webalitic)
+
+
+
 
 ## About Webalitics
 
