@@ -2,7 +2,7 @@
 
 ![Packagist Version (custom server)](https://img.shields.io/packagist/v/osit/webalitics)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/osit/webalitics/php)
-![Static Badge](https://img.shields.io/badge/PHP-Laravel-purple)
+![Static Badge](https://img.shields.io/badge/php-Laravel-purple)
 ![License](https://img.shields.io/github/license/omnisolinfotech/webalitics)
 
 
@@ -23,11 +23,11 @@ for the specific demographic.
 
 1.Composer require the package:  
 ````shell
-$ composer require osit/webalitics:dev-master 
+composer require osit/webalitics 
 ````
 2.Initialise the package:  
 ````shell
-$ php artisan webalitics:init
+php artisan webalitics:init
 ````
 
 3.Add Webalitics as middleware to your project. From your project root:
