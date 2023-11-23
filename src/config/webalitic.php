@@ -16,7 +16,7 @@ return [
     */
 
     "website" => [
-        //If route array has the all route all routes will be monitored, else only add routes you wish to monitor.
+        //If route array has the all routes then all routes will be monitored, else only add routes you wish to monitor.
         "routes" => ["","about-us","contact-us","login"],
         "date_format" => "Y-m-d",
         "hour_format" => "H:i:s",
