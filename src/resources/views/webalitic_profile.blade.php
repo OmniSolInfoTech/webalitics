@@ -5,11 +5,6 @@
 
 @section('content')
 
-{{--    @component('components.breadcrumb')--}}
-{{--        @slot('li_1') VerifyID @endslot--}}
-{{--        @slot('title') Webalitic - Visitor Profile @endslot--}}
-{{--    @endcomponent--}}
-
     @php($geoip = json_decode($visitor_info->geoip))
     <div class="row align-items-center">
         <div class="col-4">

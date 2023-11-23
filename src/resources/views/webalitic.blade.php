@@ -4,32 +4,18 @@
 
 @section('content')
 
-{{--    @component('components.breadcrumb')--}}
-{{--        @slot('li_1') VerifyID @endslot--}}
-{{--        @slot('title') Webalitic - Site Analytics @endslot--}}
-{{--    @endcomponent--}}
-
-    <div class="row my-3">
-        <h4>
-            Summary
-        </h4>
-        @if($webalitic_user[0]->credentials_faulty == 1)
+    @if($webalitic_user[0]->credentials_faulty == 1)
+        <div class="row my-3">
+            <h4>
+                Summary
+            </h4>
             <div class="col-12 my-1 px-1">
                 <div class="alert alert-danger h-100" role="alert">
                     Please check your GeoIP Credentials, requests keep failing.
                 </div>
             </div>
-        @endif
-{{--        @if($webalitic_user[0]->failed_transactions > 0)--}}
-{{--            <div class="col-12 col-md-6 my-1 px-1">--}}
-{{--                <div class="alert alert-danger h-100" role="alert">--}}
-{{--                    You have had {{ $webalitic_user[0]->failed_transactions }} /--}}
-{{--                    {{ $webalitic_user[0]->failed_transactions + $webalitic_user[0]->successful_transactions }} GeoIP--}}
-{{--                    requests fail.--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
-    </div>
+        </div>
+    @endif
     <div class="row my-3">
         <div class="col-lg-6 my-1 px-1">
             <div class="card h-100">
