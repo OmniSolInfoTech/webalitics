@@ -9,6 +9,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Osit\Webalitics\Models\WebaliticUser;
 
+/**
+ * WebaliticController - main class
+ *
+ * WebaliticController
+ * distributed under the LGPL License
+ *
+ * @author  Dominic Moeketsi developer@osit.co.za
+ * @company OmniSol Information Technology (PTY) LTD
+ * @version 1.00
+ */
 class WebaliticController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -16,6 +26,13 @@ class WebaliticController extends Controller
     {
 
     }
+
+    /**
+     * Handles route /webalitics/admin
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function adminWebalitic(Request $request)
     {
         /**
@@ -133,6 +150,12 @@ class WebaliticController extends Controller
         return view('webalitics::webalitic', $data);
     }
 
+    /**
+     * Handles route /webalitics/webalitic-profile
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function adminWebaliticProfile(Request $request)
     {
         $id = $request->post('id');

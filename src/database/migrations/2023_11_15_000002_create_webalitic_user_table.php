@@ -4,6 +4,16 @@ use \Illuminate\Database\Migrations\Migration;
 use \Illuminate\Support\Facades\Schema;
 use \Illuminate\Database\Schema\Blueprint;
 
+/**
+ * CreateWebaliticUserTable - main class
+ *
+ * CreateWebaliticUserTable
+ * distributed under the LGPL License
+ *
+ * @author  Dominic Moeketsi developer@osit.co.za
+ * @company OmniSol Information Technology (PTY) LTD
+ * @version 1.00
+ */
 class CreateWebaliticUserTable extends Migration
 {
     /**

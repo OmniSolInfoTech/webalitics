@@ -2,12 +2,23 @@
 
 namespace Osit\Webalitics\Libraries;
 
-class GeoIP{
+/**
+ * GeoIP - main class
+ *
+ * GeoIP
+ * distributed under the LGPL License
+ *
+ * @author  Dominic Moeketsi developer@osit.co.za
+ * @company OmniSol Information Technology (PTY) LTD
+ * @version 1.00
+ */
+class GeoIP
+{
     //PROTECTED COMMON VARIABLES
-    protected $countryURL = 'https://geolite.info/geoip/v2.1/country/'; //LIVE SERVICES
-    protected $cityURL = 'https://geolite.info/geoip/v2.1/city/'; //LIVE SERVICES
-    protected $clientId = "";
-    protected $secret = "";
+    protected string $countryURL = 'https://geolite.info/geoip/v2.1/country/'; //LIVE SERVICES
+    protected string $cityURL = 'https://geolite.info/geoip/v2.1/city/'; //LIVE SERVICES
+    protected string $clientId = "";
+    protected string $secret = "";
 
     public function __construct($clientId,$secret)
     {
@@ -15,7 +26,12 @@ class GeoIP{
         $this->secret = $secret;
     }
 
-    //Call GeoIP Insights
+    /*
+     * Call GeoIP Insights
+     *
+     * @param $ipAddress
+     * @return mixed
+     */
     public function GeoLiteCountry($ipAddress){
         $url = $this->countryURL.$ipAddress;
         $ch = curl_init();
@@ -32,12 +48,14 @@ class GeoIP{
         curl_close($ch);
 
         return json_decode($output, true);
-
-        //return $info ;
-
     }
 
-    //Call GeoIP Insights
+    /**
+     * Call GeoIP Insights
+     *
+     * @param $ipAddress
+     * @return array
+     */
     public function GeoLiteCity($ipAddress){
         $url = $this->cityURL.$ipAddress;
         $ch = curl_init();

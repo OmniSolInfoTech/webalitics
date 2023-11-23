@@ -4,9 +4,24 @@ namespace Osit\Webalitics;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * WebaliticsBaseServiceProvider - main class
+ *
+ * WebaliticsBaseServiceProvider
+ * distributed under the LGPL License
+ *
+ * @author  Dominic Moeketsi developer@osit.co.za
+ * @company OmniSol Information Technology (PTY) LTD
+ * @version 1.00
+ */
 class WebaliticsBaseServiceProvider extends ServiceProvider
 {
-    public function boot()
+    /**
+     * Bootstrap any package services.
+     *
+     * @return void
+     */
+    public function boot(): void
     {
         if($this->app->runningInConsole()) {
             $this->registerPublishing();
@@ -17,19 +32,34 @@ class WebaliticsBaseServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../src/resources/views', 'webalitics');
     }
 
-    public function register()
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register(): void
     {
         $this->commands([
             Console\ProcessCommand::class,
         ]);
     }
 
-    private function registerResources()
+    /**
+     * Register the package resources.
+     *
+     * @return void
+     */
+    private function registerResources(): void
     {
         $this->loadMigrationsFrom(__DIR__."/database/migrations");
     }
 
-    protected function registerPublishing()
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
+    protected function registerPublishing(): void
     {
         $this->publishes([__DIR__."/config/webalitic.php" => config_path("webalitic.php")], "webalitics-config");
         $this->publishes([ __DIR__."/resources/webalitic-assets" => public_path("webalitic-assets"),], "webalitics-config");

@@ -2,6 +2,16 @@
 
 namespace Osit\Webalitics\Libraries;
 
+/**
+ * Webalitic - main class
+ *
+ * Webalitic
+ * distributed under the LGPL License
+ *
+ * @author  Dominic Moeketsi developer@osit.co.za
+ * @company OmniSol Information Technology (PTY) LTD
+ * @version 1.00
+ */
 class Webalitic
 {
 
@@ -16,7 +26,13 @@ class Webalitic
         $this->traffic_settings = config('webalitic.traffic');
     }
 
-    function is_search_engine($str)
+    /**
+     * IS $str a search engine?
+     *
+     * @param $str
+     * @return bool
+     */
+    function is_search_engine($str): bool
     {
         $arr_search_engines = array("google", "yandex", "yahoo", "bing", "baidu", "aol", "duckduckgo");
 
@@ -27,7 +43,13 @@ class Webalitic
     }
 
 
-    function search_engine_type($str)
+    /**
+     * Get search engine type.
+     *
+     * @param $str
+     * @return string
+     */
+    function search_engine_type($str): string
     {
         $arr_search_engines = array("google", "yandex", "yahoo", "bing", "baidu", "aol", "duckduckgo");
 
@@ -39,7 +61,13 @@ class Webalitic
         return "";
     }
 
-    function is_spam($str)
+    /**
+     * Is $str spam?
+     *
+     * @param $str
+     * @return bool
+     */
+    function is_spam($str): bool
     {
         $arr_spam_referrrals = array("fuzzer", "cjb.net");
 
@@ -49,7 +77,13 @@ class Webalitic
         return false;
     }
 
-    function is_same_domain($str)
+    /**
+     * Is $str the same domain?
+     *
+     * @param $str
+     * @return bool
+     */
+    function is_same_domain($str): bool
     {
         if (stripos($str, $this->get_domain()) !== false) {
             return true;
@@ -58,7 +92,13 @@ class Webalitic
         }
     }
 
-    function is_same_referral($str)
+    /**
+     * Is $str the same referral?
+     *
+     * @param $str
+     * @return bool
+     */
+    function is_same_referral($str): bool
     {
         global $_SERVER;
 
@@ -73,7 +113,13 @@ class Webalitic
         }
     }
 
-    function monitor_route($route)
+    /**
+     * Is $route monitored?
+     *
+     * @param $route
+     * @return bool
+     */
+    function monitor_route($route): bool
     {
         if(in_array("all",$this->website_settings["routes"])) {
             return true;
@@ -84,13 +130,24 @@ class Webalitic
         }
     }
 
-    function get_engine_name($str)
+    /**
+     * Get the engine name.
+     *
+     * @param $str
+     * @return array|string
+     */
+    function get_engine_name($str): array|string
     {
         $parse = parse_url($str);
         return str_ireplace('www.', '', $parse['host']);
 
     }
 
+    /**
+     * Get the domain.
+     *
+     * @return mixed
+     */
     function get_domain()
     {
         if (trim($_SERVER['SERVER_NAME']) != "") {
@@ -102,7 +159,13 @@ class Webalitic
 
     }
 
-    function exclude_custom_config($referral = "")
+    /**
+     * Exclude custom config.
+     *
+     * @param $referral
+     * @return bool
+     */
+    function exclude_custom_config($referral = ""): bool
     {
 
         if (isset($this->traffic_settings["direct_traffic"]) && $this->traffic_settings["direct_traffic"] == "0" && $referral == "") {
