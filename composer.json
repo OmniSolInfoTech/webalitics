@@ -1,6 +1,10 @@
 {
     "name": "osit/webalitics",
     "description": "Focused web analytics software, with real-time reports about the traffic sources, locations, and technologies used by the visitors.",
+    "version": "1.0.0",
+    "keywords": ["Web Analytics","Analytics"],
+    "homepage": "https://github.com/OmniSolInfoTech/webalitic",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Osit\\Webalitics\\": "src/"
@@ -16,8 +20,9 @@
     },
     "authors": [
         {
-            "name": "Dominic",
-            "email": "developer@osit.co.za"
+            "name": "Dominic Moeketsi",
+            "email": "developer@osit.co.za",
+            "role": "Developer"
         }
     ],
     "require": {
