@@ -1,6 +1,6 @@
 # WEBALITICS  
 
-![Packagist Version (custom server)](https://img.shields.io/packagist/v/osit/webalitics-)
+![Packagist Version (custom server)](https://img.shields.io/packagist/v/osit/webalitics)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/osit/webalitics/php)
 ![Static Badge](https://img.shields.io/badge/PHP-Laravel-purple)
 ![License](https://img.shields.io/github/license/omnisolinfotech/webalitics)
