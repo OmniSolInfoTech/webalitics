@@ -23,7 +23,8 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.32"
+        "laravel/framework": "^10.32",
+        "ext-curl": "*"
     },
     "extra": {
         "laravel": {
