@@ -9,8 +9,9 @@ use Osit\Webalitics\Libraries\Webalitic;
 use Osit\Webalitics\Libraries\GeoIP;
 use Osit\Webalitics\Models\WebaliticUser;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Routing\Controller;
 
-class Visilyzer
+class Visilyzer extends Controller
 {
     /**
      * Handle an incoming request.
@@ -25,12 +26,15 @@ class Visilyzer
         //Load Config setting
 
         if (is_null(config("webalitic"))) {
-            die("Error in Webalitics Config File. <br>Ensure you have ran 'php artisan webalitics:init' or publish ".
-                "the config file by running 'php artisan vendor:publish --tag=webalitics-config'.");
+            die($this->throwWebaliticError("Error in Webalitics Config File. Ensure you have ran 'php artisan 
+                                            webalitics:init' or publish the config file by running 'php artisan 
+                                            vendor:publish --tag=webalitics-config'."));
         } else if (empty(config("webalitic.geoip.clientId")) || empty(config("webalitic.geoip.secret")) ) {
-            die("Error in Webalitics Config File. <br>One or more of your GeoIP credentials may be empty.");
+            die($this->throwWebaliticError("Error in Webalitics Config File. One or more of your GeoIP credentials 
+                                            may be empty."));
         } else if (!Schema::hasTable("webalitic_user")) {
-            die("Error in Webalitics DB table(s). <br>Ensure you have ran 'php artisan migrate' to include crucial Webalitics DB table(s).");
+            die($this->throwWebaliticError("Error in Webalitics DB table(s). Ensure you have ran 
+                                            'php artisan migrate' to include crucial Webalitics DB table(s)."));
         } else {
             /**
              * If there is no entry for a User with user_name = {env("WEBALITIC_USER_NAME")} in {webalitic_user} table,
@@ -282,5 +286,16 @@ class Visilyzer
             ["id", "user_name", "website_name"],
             ["successful_transactions", "failed_transactions", "credentials_faulty"]
         );
+    }
+
+    /**
+     * Prints an easy-to-read error message.
+     *
+     * @param string $message
+     * @return string
+     */
+    public function throwWebaliticError(string $message): string
+    {
+        return view("webalitics::webalitic_error_view", ["message" => $message]);
     }
 }
