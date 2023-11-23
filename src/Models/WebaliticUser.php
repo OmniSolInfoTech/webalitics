@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  * WebaliticUser - main class
  *
  * WebaliticUser
- * distributed under the LGPL License
+ * distributed under the MIT License
  *
  * @author  Dominic Moeketsi developer@osit.co.za
  * @company OmniSol Information Technology (PTY) LTD

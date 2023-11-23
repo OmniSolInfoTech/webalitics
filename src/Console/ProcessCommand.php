@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Process;
  * ProcessCommand - main class
  *
  * ProcessCommand
- * distributed under the LGPL License
+ * distributed under the MIT License
  *
  * @author  Dominic Moeketsi developer@osit.co.za
  * @company OmniSol Information Technology (PTY) LTD

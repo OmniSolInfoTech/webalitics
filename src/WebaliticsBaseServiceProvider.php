@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
  * WebaliticsBaseServiceProvider - main class
  *
  * WebaliticsBaseServiceProvider
- * distributed under the LGPL License
+ * distributed under the MIT License
  *
  * @author  Dominic Moeketsi developer@osit.co.za
  * @company OmniSol Information Technology (PTY) LTD
