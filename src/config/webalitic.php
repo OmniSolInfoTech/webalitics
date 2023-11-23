@@ -22,16 +22,6 @@ return [
         "hour_format" => "H:i:s",
         "time_zone" => "Africa/Johannesburg",
         "domain_name" => "localhost",
-        "direct_traffic" => "",
-    ],
-
-    "traffic" => [
-        "exclude_referrals" => "",
-        "exclude_countries" => "",
-        "direct_traffic" => "",
-        "block_referrals" => "",
-        "block_countries" => "",
-        "blocked_message" => "",
     ],
 
     "geoip" => [
