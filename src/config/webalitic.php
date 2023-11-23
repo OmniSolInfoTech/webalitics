@@ -35,8 +35,8 @@ return [
     ],
 
     "geoip" => [
-        "clientId" => "762926",
-        "secret" => "S9XiRcAkNkadnhRe"
+        "clientId" => "",
+        "secret" => ""
     ]
 
 ];
