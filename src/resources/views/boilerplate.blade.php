@@ -24,7 +24,7 @@
         <div class="container">
             @yield('content')
             @yield('script')
-            </div>
+        </div>
         <script src="{{ asset('webalitic-assets/custom.js')}}"></script>
     </body>
 </html>
