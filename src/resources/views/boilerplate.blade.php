@@ -21,6 +21,11 @@
         <script src="{{ asset('webalitic-assets/leaflet/leaflet.js') }}"></script>
     </head>
     <body>
+        <nav class="navbar sticky-top bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/webalitics/admin">WEBALITICS :-)</a>
+            </div>
+        </nav>
         <div class="container">
             @yield('content')
             @yield('script')
