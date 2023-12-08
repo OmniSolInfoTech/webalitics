@@ -24,7 +24,8 @@ class WebaliticController extends Controller
     use AuthorizesRequests, ValidatesRequests;
     public function __construct()
     {
-
+        // Uncomment below line to enable auth for this controller
+        // $this->middleware('auth');
     }
 
     /**
