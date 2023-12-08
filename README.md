@@ -46,8 +46,12 @@ for the specific demographic.
    1. visit your website to check for any errors.
    2. visit Webalitics Dashboard using path {/webalitics/admin} e.g.: http://127.0.0.1:8000/webalitics/admin to get your Webalitics!
 
+## Security
+You can protect you Webalitics data by uncommenting the line of code:  
+``// $this->middleware('auth');``  
+in the WebaliticsController.php constructor.
+
 ## Contributing
 
 Thank you for considering contributing to the Webalitics package!  
 Please email our developer via [developer@osit.co.za](mailto:developer@osit.co.za) to find out how.
-
